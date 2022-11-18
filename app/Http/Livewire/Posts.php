@@ -8,7 +8,7 @@ use App\Models\Post;
 class Posts extends Component
 {
     public $posts, $title, $description, $post_id;
-    public $isOpen = 0;
+    public $isOpen = false;
 
     public function render()
     {

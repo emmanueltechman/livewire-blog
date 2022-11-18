@@ -1,5 +1,5 @@
 <div>
-    @if($updateMode)
+    @if($isOpen)
         @include('livewire.update')
     @else
         @include('livewire.create')
