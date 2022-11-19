@@ -8,7 +8,7 @@ use App\Models\Post;
 class Posts extends Component
 {
     public $posts, $title, $description, $post_id;
-    public $isOpen = false;
+    public $isOpen = 0;
 
     public function render()
     {
@@ -18,8 +18,8 @@ class Posts extends Component
 
     public function create()
     {
-        $this->resetInputFields ();
-        $this->openModal ();
+        $this->resetInputFields();
+        $this->openModal();
     }
 
     public function openModal()
@@ -34,7 +34,9 @@ class Posts extends Component
 
     }
 
-    private function resetInputFields() {
+    public function resetInputFields() {
+        // $post = Post::findOrFail($id);
+        // $this->post_id = $id;
         $this->title = ' ';
         $this->description = ' ';
         $this->post_id = ' ';
@@ -51,10 +53,8 @@ class Posts extends Component
             'title' => $this->title,
             'description' => $this->description
         ]);
-
         session()->flash('message',
-            $this->post_id ? 'Post Updated Successfully.' : 'Post Created Successfully.');
-
+        $this->post_id ? 'Post Updated Successfully.' : 'Post Created Successfully.');
             $this->closeModal();
             $this->resetInputFields();
 
@@ -65,7 +65,6 @@ class Posts extends Component
         $this->post_id = $id;
         $this->title = $post->title;
         $this->description = $post->description;
-
         $this->openModal();
     }
 
